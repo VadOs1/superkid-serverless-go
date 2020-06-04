@@ -1,0 +1,71 @@
+service: superkid
+
+frameworkVersion: '>=1.28.0 <2.0.0'
+
+plugins:
+  - serverless-iam-roles-per-function
+
+custom:
+  region: us-east-1
+  profile: prod
+  newOrderSnsTopicName: ${self:custom.profile}-superkid-new-order
+  newOrderSnsTopinArn: {"Fn::Join": ["", ["arn:aws:sns:${self:custom.region}:", { "Ref": "AWS::AccountId" }, ":${self:custom.newOrderSnsTopicName}" ]]}
+
+provider:
+  name: aws
+  runtime: go1.x
+  region: ${self:custom.region}
+  stage: ${self:custom.profile}
+  memorySize: 128
+  timeout: 10
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  products:
+    handler: bin/handler/products
+    events:
+      - http:
+          path: products
+          method: get
+          cors: true
+  products-by-article:
+    handler: bin/handler/products-by-article
+    events:
+      - http:
+          path: products/{article}
+          method: get
+          cors: true
+  featured-products:
+    handler: bin/handler/featured-products
+    events:
+      - http:
+          path: products/featured/{article}
+          method: get
+          cors: true
+  send-new-order-to-sns:
+    handler: bin/handler/send-new-order-to-sns
+    events:
+      - http:
+          path: send-new-order-to-sns
+          method: post
+          cors: true
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - sns:Publish
+        Resource:
+          - ${self:custom.newOrderSnsTopinArn}
+    environment:
+      SNS_ARN: ${self:custom.newOrderSnsTopinArn}
+
+resources:
+  Resources:
+    newOrderSnsTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ${self:custom.newOrderSnsTopicName}
