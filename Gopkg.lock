@@ -2,7 +2,7 @@
 
 
 [[projects]]
-  digest = "1:ad3a958de5100511e795bc6abd52a039b9538b7e42d7b393af962238aaa584ef"
+  digest = "1:4ff66248497529855802143e5c448c1da6129a6a1a7cd02040c2eb79005d6bce"
   name = "github.com/aws/aws-lambda-go"
   packages = [
     "events",
@@ -12,11 +12,11 @@
     "lambdacontext",
   ]
   pruneopts = ""
-  revision = "18b606949c45bc923e421d7ea891d6d02a34f7dd"
-  version = "v1.16.0"
+  revision = "ad74310fc14bbaeecde5c9a4acbdea7b8122c730"
+  version = "v1.36.1"
 
 [[projects]]
-  digest = "1:a385faa127982022d0c4a927eb041946b0e242480e497dabc51fcdff94119353"
+  digest = "1:5e124d5796b4a9be016f410e0fc69738e85449708e99baf3ff0d95efd9ccd867"
   name = "github.com/aws/aws-sdk-go"
   packages = [
     "aws",
@@ -29,6 +29,7 @@
     "aws/credentials/ec2rolecreds",
     "aws/credentials/endpointcreds",
     "aws/credentials/processcreds",
+    "aws/credentials/ssocreds",
     "aws/credentials/stscreds",
     "aws/csm",
     "aws/defaults",
@@ -48,17 +49,21 @@
     "internal/sync/singleflight",
     "private/protocol",
     "private/protocol/json/jsonutil",
+    "private/protocol/jsonrpc",
     "private/protocol/query",
     "private/protocol/query/queryutil",
     "private/protocol/rest",
+    "private/protocol/restjson",
     "private/protocol/xml/xmlutil",
     "service/sns",
+    "service/sso",
+    "service/sso/ssoiface",
     "service/sts",
     "service/sts/stsiface",
   ]
   pruneopts = ""
-  revision = "6f7eb6ed98b547fe8cb589c0a40cdc403a9e254d"
-  version = "v1.31.1"
+  revision = "5ce492c7b41aa6fa66f08a247219dcab734f31c3"
+  version = "v1.44.168"
 
 [[projects]]
   digest = "1:13fe471d0ed891e8544eddfeeb0471fd3c9f2015609a1c000aefdedf52a19d40"

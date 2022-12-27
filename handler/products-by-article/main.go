@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"vadim.dissa.gmail.com/superkid-lambda-go/model"
+	"github.com/vados1/superkid-serverless-go/model"
 )
 
 type Product struct {

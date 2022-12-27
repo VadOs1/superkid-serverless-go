@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"math/rand"
-	"vadim.dissa.gmail.com/superkid-lambda-go/model"
+	"github.com/vados1/superkid-serverless-go/model"
 )
 
 const numberOfFeaturedSubProducts = 6
